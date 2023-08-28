@@ -45,6 +45,19 @@
 | ----------------------- | -----------| ------------------------------ |
 | user_id                 | references | null: false, foreign_key: true |
 | item_id                 | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :user
+- belongs_to :item
+- has_one    :address
+
+
+## addresses テーブル
+
+| Column                  | Type       | Options                        |
+| ----------------------- | -----------| ------------------------------ |
+| order_id                | references | null: false, foreign_key: true |
 | postal_code             | string     | null: false, foreign_key: true |
 | prefecture              | text       | null: false, foreign_key: true |
 | city                    | string     | null: false, foreign_key: true |
@@ -54,5 +67,4 @@
 
 ### Association
 
-- belongs_to :user
-- belongs_to :item
+- belongs_to :order
