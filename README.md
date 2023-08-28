@@ -25,11 +25,11 @@
 | user                    | references | null: false, foreign_key: true |
 | name                    | string     | null: false                    |
 | info                    | text       | null: false                    |
-| genre_id                | integer    | null: false                    |
-| genre_id                | integer    | null: false                    |
-| genre_id                | integer    | null: false                    |
-| genre_id                | integer    | null: false                    |
-| genre_id                | integer    | null: false                    |
+| category_id             | integer    | null: false                    |
+| status_id               | integer    | null: false                    |
+| shipping-fee_id         | integer    | null: false                    |
+| prefecture_id           | integer    | null: false                    |
+| scheduled_delivery_id   | integer    | null: false                    |
 | price                   | integer    | null: false                    |
 
 ### Association
@@ -57,7 +57,7 @@
 | ----------------------- | -----------| ------------------------------ |
 | order                   | references | null: false, foreign_key: true |
 | postal_code             | string     | null: false                    |
-| genre_id                | integer    | null: false                    |
+| prefecture_id           | integer    | null: false                    |
 | city                    | string     | null: false                    |
 | addresses               | string     | null: false                    |
 | building                | string     |                                |
