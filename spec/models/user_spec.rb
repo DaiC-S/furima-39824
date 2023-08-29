@@ -1,7 +1,5 @@
 require 'rails_helper'
 
-
-
 RSpec.describe User, type: :model do
   before do
     @user = FactoryBot.build(:user)
@@ -31,7 +29,7 @@ RSpec.describe User, type: :model do
     it 'emailは@を含まないと登録できない' do
       @user.email = 'testmail'
       @user.valid?
-      expect(@user.errors.full_messages).to include("Email is invalid")
+      expect(@user.errors.full_messages).to include('Email is invalid')
     end
     it 'passwordが空では登録できない' do
       @user.password = ''
@@ -66,7 +64,7 @@ RSpec.describe User, type: :model do
       @user.last_name = 'satou'
       @user.first_name = 'tarou'
       @user.valid?
-      expect(@user.errors.full_messages).to include("Last name is invalid", "First name is invalid")
+      expect(@user.errors.full_messages).to include('Last name is invalid', 'First name is invalid')
     end
     it 'last_name_kanaとfirst_name_kanaが空では登録できない' do
       @user.last_name_kana = ''
@@ -78,12 +76,12 @@ RSpec.describe User, type: :model do
       @user.last_name_kana = 'satou'
       @user.first_name_kana = 'たろう'
       @user.valid?
-      expect(@user.errors.full_messages).to include("Last name kana is invalid", "First name kana is invalid")
+      expect(@user.errors.full_messages).to include('Last name kana is invalid', 'First name kana is invalid')
     end
     it 'birth_dateが空では登録できない' do
       @user.birth_date = ''
       @user.valid?
       expect(@user.errors.full_messages).to include("Birth date can't be blank")
-    end  
+    end
   end
 end
