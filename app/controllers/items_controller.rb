@@ -12,7 +12,7 @@ class ItemsController < ApplicationController
   def create
     @item = Item.create(item_params)
     if @item.save
-      rdirect_to  '/'
+      redirect_to  '/'
     else 
       render '/items/new', status: :unprocessable_entity
     end
@@ -27,7 +27,7 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:image).merge(user_id: current_user.id)
+    params.require(:item).permit(:image,:name,:info,:category_id,:status_id,:shipping_fee_id,:prefecture_id,:scheduled_delivery_id,:price).merge(user_id: current_user.id)
   end
 
 end
