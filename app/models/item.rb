@@ -13,5 +13,5 @@ class Item < ApplicationRecord
             presence: true
   validates :category_id, :status_id, :shipping_fee_id, :prefecture_id, :scheduled_delivery_id,
             numericality: { other_than: 1, message: "can't be blank" }
-  validates :price, numericality: { in: 300..9_999_999 }, only_integer:true
+  validates :price, numericality: { in: 300..9_999_999, only_integer: true }
 end
