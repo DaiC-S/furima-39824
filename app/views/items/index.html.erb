@@ -127,10 +127,7 @@
       新規投稿商品
     </div>
     <ul class='item-lists'>
-      <% if @items.empty? %>
-
-      <%# 商品がない場合は以下のダミー商品が表示されるようにしましょう %>
-      <%# 商品がある場合は表示されないようにしましょう %>
+     <% if @items.empty? %>
       <li class='list'>
         <%= link_to '#' do %>
         <%= image_tag "https://tech-master.s3.amazonaws.com/uploads/curriculums/images/Rails1-4/sample.jpg", class: "item-img" %>
@@ -148,11 +145,7 @@
         </div>
         <% end %>
       </li>
-      <%# //商品がある場合は表示されないようにしましょう %>
-      <%# //商品がない場合は以下のダミー商品が表示されるようにしましょう %>
-
-      <%# 商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
-      <% else %>
+     <% else %>
       <% @items.each do |item| %>
       <li class='list'>
         <%= link_to "#" do %>
@@ -183,11 +176,10 @@
         <% end %>
       </li>
       <% end %>
-      <%# //商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
-      <% end %>
+     <% end %>
     </ul>
   </div>
-  <%# /商品一覧 %>
+
 </div>
 <% if user_signed_in? %>
 <%= link_to(new_item_path, class: 'purchase-btn') do %>
