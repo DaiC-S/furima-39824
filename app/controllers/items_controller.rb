@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   before_action :move_to_top, except: [:index, :show, :edit]
   before_action :authenticate_user!, only: [:edit]
-  before_action :authentication_for_signed_in_user, only: [:edit]
+  before_action :authentication_for_signed_in_user, only: [:edit, :destroy]
   before_action :set_item, only: [:show, :edit, :update]
 
   def index
@@ -37,12 +37,8 @@ class ItemsController < ApplicationController
 
   def destroy
     item = Item.find(params[:id])
-    if user_signed_in?
-    item.destroy
+    item.destroy if user_signed_in?
     redirect_to root_path
-    else
-    authentication_for_signed_in_user
-    end
   end
 
   def authentication_for_signed_in_user
