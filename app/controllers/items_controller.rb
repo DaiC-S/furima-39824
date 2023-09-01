@@ -35,6 +35,12 @@ class ItemsController < ApplicationController
     end
   end
 
+  def destroy
+    item = Item.find(params[:id])
+    item.destroy if user_signed_in?
+    redirect_to root_path
+  end
+
   def authentication_for_signed_in_user
     redirect_to root_path if user_signed_in? && current_user.id != Item.find(params[:id]).user_id
   end
