@@ -41,7 +41,6 @@ class ItemsController < ApplicationController
     redirect_to root_path if user_signed_in? && current_user.id != Item.find(params[:id]).user_id
   end
 
-
   private
 
   def move_to_top
