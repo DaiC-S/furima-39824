@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
-  before_action :move_to_top, except: [:index, :show]
-  before_action :authentication_for_signed_in_user, only: [:edit]
+  before_action :move_to_top, except: [:index, :show, :edit]
   before_action :authenticate_user!, only: [:edit]
+  before_action :authentication_for_signed_in_user, only: [:edit]
 
   def index
     @items = Item.includes(:user).order('created_at DESC')
@@ -40,6 +40,7 @@ class ItemsController < ApplicationController
   def authentication_for_signed_in_user
     redirect_to root_path if user_signed_in? && current_user.id != Item.find(params[:id]).user_id
   end
+
 
   private
 
