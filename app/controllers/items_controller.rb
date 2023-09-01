@@ -1,8 +1,8 @@
 class ItemsController < ApplicationController
   before_action :move_to_top, except: [:index, :show, :edit]
   before_action :authenticate_user!, only: [:edit]
-  before_action :authentication_for_signed_in_user, only: [:edit]
-  before_action :set_item, only:[:show, :edit, :update] 
+  before_action :authentication_for_signed_in_user, only: [:edit, :destroy]
+  before_action :set_item, only: [:show, :edit, :update]
 
   def index
     @items = Item.includes(:user).order('created_at DESC')
@@ -33,6 +33,12 @@ class ItemsController < ApplicationController
     else
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    item = Item.find(params[:id])
+    item.destroy if user_signed_in?
+    redirect_to root_path
   end
 
   def authentication_for_signed_in_user
